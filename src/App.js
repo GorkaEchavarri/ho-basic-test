@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import './App.css';
 import DisplayTasks from './components/UI/DisplayTasks';
 import NewTask from './components/UI/NewTask';
@@ -11,13 +12,23 @@ const initial_tasks = [
 ]
 
 function App() {
+  const [tasks, setTasks] = useState(initial_tasks);
+
+
+  function addTaskHandler(task) {
+    setTasks((prevTasks) => {
+      return [task, ...prevTasks];
+    });
+  };
+
+
   return (
     <div className="App">
       <header className="App-header">
       </header>
       <div>
-        <NewTask/>
-        <DisplayTasks items={initial_tasks}/>
+        <NewTask onSaveTaskData={addTaskHandler}/>
+        <DisplayTasks tasks={tasks}/>
       </div>
     </div>
   );
