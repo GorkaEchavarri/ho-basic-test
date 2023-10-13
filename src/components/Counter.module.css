@@ -1,12 +1,12 @@
 .container {
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 173, 181, 0.3);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 80%;
   margin: 30px auto;
   padding: 10px;
   max-width: 620px;
   overflow: hidden;
-  background-color: white;
+  background-color: #F5FCCD;
   display: flex;
   justify-content: space-around;
 }

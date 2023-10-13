@@ -4,12 +4,12 @@ import classes from './NewTask.module.css';
 function NewTask(props) {
   const [enteredTask, setEnteredTask] = useState('');
 
-
   function submitHandler(event) {
     event.preventDefault();
 
     const updatedEnteredTask = enteredTask.trim();
 
+    //In case an invalid task is entered:
     if (updatedEnteredTask === '') {
       console.log("Please enter a valid task");
     } else {
@@ -29,12 +29,12 @@ function NewTask(props) {
 
 
   return (
-            <div className={classes.form}>
-                <form>
-                    <input className={classes.input} value={enteredTask} onChange={taskChangeHandler}/>
-                    <button className={classes["add-button"]} type='submit' onClick={submitHandler}>Add Task</button>
-                </form>
-            </div>
+    <div className={classes.form}>
+        <form>
+            <input className={classes.input} value={enteredTask} onChange={taskChangeHandler}/>
+            <button className={classes["add-button"]} type='submit' onClick={submitHandler}>Add Task</button>
+        </form>
+    </div>
   )
 };
 

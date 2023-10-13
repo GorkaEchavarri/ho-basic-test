@@ -1,6 +1,7 @@
 import React from 'react';
 
 function Filter(props) {
+
   function filterHandler(event) {
     props.onFilterChange(event.target.value)
   };
