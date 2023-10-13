@@ -2,27 +2,42 @@ import React, { useState } from 'react';
 import './App.css';
 import DisplayTasks from './components/UI/DisplayTasks';
 import NewTask from './components/UI/NewTask';
+import Counter from './components/Counter';
 
 
-const initial_tasks = [
+const initialTasks = [
   {id: 123, task: "Clean my room", done: true},
   {id: 236, task: "Make my bed", done: false},
   {id: 456, task: "Groceries", done: false},
+  {id: 852, task: "Call doctor", done: false},
 
 ]
 
 function App() {
-  const [tasks, setTasks] = useState(initial_tasks);
+  const [tasks, setTasks] = useState(initialTasks);
+  const [filteredTasks, setFilteredTasks] = useState(initialTasks);
 
 
-  function addTaskHandler(task) {
-    setTasks((prevTasks) => {
-      return [task, ...prevTasks];
-    });
+
+  const addTaskHandler = (task) => {
+    setTasks((prevTasks) => [task, ...prevTasks]);
+    setFilteredTasks((prevTasks) => [task, ...prevTasks]);
   };
 
   const handleUpdateTaskList = (updatedTasks) => {
     setTasks(updatedTasks);
+    setFilteredTasks(updatedTasks);
+  };
+
+  const handleFilterChange = (selectedType) => {
+    if (selectedType === 'all') {
+      setFilteredTasks(tasks);
+    } else {
+      const filtered = tasks.filter((task) =>
+        selectedType === 'done' ? task.done : !task.done
+      );
+      setFilteredTasks(filtered);
+    }
   };
 
   return (
@@ -32,7 +47,8 @@ function App() {
       </header>
       <div>
         <NewTask onSaveTaskData={addTaskHandler}/>
-        <DisplayTasks tasks={tasks} onUpdateTaskList={handleUpdateTaskList}/>
+        <Counter tasks={tasks} onFilterChange={handleFilterChange}/>
+        <DisplayTasks tasks={filteredTasks} onUpdateTaskList={handleUpdateTaskList}/>
       </div>
     </div>
   );

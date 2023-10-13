@@ -29,14 +29,12 @@ function NewTask(props) {
 
 
   return (
-    <React.Fragment>
             <div className={classes.form}>
                 <form>
                     <input className={classes.input} value={enteredTask} onChange={taskChangeHandler}/>
                     <button className={classes["add-button"]} type='submit' onClick={submitHandler}>Add Task</button>
                 </form>
             </div>
-    </React.Fragment>
   )
 };
 
