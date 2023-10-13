@@ -21,14 +21,18 @@ function App() {
     });
   };
 
+  const handleUpdateTaskList = (updatedTasks) => {
+    setTasks(updatedTasks);
+  };
 
   return (
     <div className="App">
       <header className="App-header">
+        <h1>To-Do List</h1>
       </header>
       <div>
         <NewTask onSaveTaskData={addTaskHandler}/>
-        <DisplayTasks tasks={tasks}/>
+        <DisplayTasks tasks={tasks} onUpdateTaskList={handleUpdateTaskList}/>
       </div>
     </div>
   );

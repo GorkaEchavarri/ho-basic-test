@@ -3,10 +3,32 @@
   text-align: center;
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 173, 181, 0.3);
   width: 80%;
   margin: 30px auto;
   padding: 20px;
   max-width: 400px;
   overflow: hidden;
+}
+
+ul {
+  list-style-type: none;
+  font-size: 24px;
+}
+
+li:hover{
+  background-color: #21fa007d;
+}
+
+.deletebtn {
+  padding: 2px;
+  border: none;
+  background: none;
+  font-size: 18px;
+  float: right;
+}
+
+.deletebtn:hover{
+  background-color: #fa00007d;
+  cursor: pointer;
 }
