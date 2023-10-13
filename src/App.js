@@ -4,32 +4,32 @@ import DisplayTasks from './components/UI/DisplayTasks';
 import NewTask from './components/UI/NewTask';
 import Counter from './components/Counter';
 
-
+//Initial Dummy tasks for displaying when app loaded
 const initialTasks = [
   {id: 123, task: "Clean my room", done: true},
   {id: 236, task: "Make my bed", done: false},
   {id: 456, task: "Groceries", done: false},
   {id: 852, task: "Call doctor", done: false},
-
 ]
 
 function App() {
   const [tasks, setTasks] = useState(initialTasks);
   const [filteredTasks, setFilteredTasks] = useState(initialTasks);
 
-
-
-  const addTaskHandler = (task) => {
+  //function that takes the task created in NewTask component and updates the hash
+  function addTaskHandler(task) {
     setTasks((prevTasks) => [task, ...prevTasks]);
     setFilteredTasks((prevTasks) => [task, ...prevTasks]);
   };
 
-  const handleUpdateTaskList = (updatedTasks) => {
+  //
+  function handleUpdateTaskList(updatedTasks) {
     setTasks(updatedTasks);
     setFilteredTasks(updatedTasks);
   };
 
-  const handleFilterChange = (selectedType) => {
+  //To filter tasks and send then to DisplayTasks component
+  function handleFilterChange(selectedType) {
     if (selectedType === 'all') {
       setFilteredTasks(tasks);
     } else {
@@ -47,6 +47,7 @@ function App() {
       </header>
       <div>
         <NewTask onSaveTaskData={addTaskHandler}/>
+        {/* Inside the counter we can also find the Filter component */}
         <Counter tasks={tasks} onFilterChange={handleFilterChange}/>
         <DisplayTasks tasks={filteredTasks} onUpdateTaskList={handleUpdateTaskList}/>
       </div>
