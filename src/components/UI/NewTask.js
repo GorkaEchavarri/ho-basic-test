@@ -16,6 +16,7 @@ function NewTask(props) {
       const taskData = {
         id: Math.random().toString(),
         task: updatedEnteredTask,
+        done: false,
       };
       props.onSaveTaskData(taskData);
       setEnteredTask('');
